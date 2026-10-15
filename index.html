@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>🍭 Candy Ranger | Americký Burger Hrdina vs Jednorožci 🦄</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Lilita+One&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="game-wrapper">
+    <!-- Horní ovládací a informační panel -->
+    <header class="top-bar">
+      <div class="game-logo">
+        <span class="logo-icon">🍔</span>
+        <h1>CANDY RANGER</h1>
+        <span class="logo-sub">AMERICKÝ BURGER HRDINA vs JEDNOROŽCI</span>
+      </div>
+      <div class="quick-actions">
+        <button id="btn-sound" class="btn-bubble" title="Zapnout / Vypnout zvuk (Klávesa M)">
+          <span id="sound-icon">🔊</span> <span id="sound-text">Zvuk ZAP</span>
+        </button>
+        <button id="btn-fullscreen" class="btn-bubble" title="Režim celé obrazovky">
+          ⛶ Celá obrazovka
+        </button>
+      </div>
+    </header>
+
+    <!-- Herní plátno Canvas -->
+    <div class="canvas-container">
+      <canvas id="gameCanvas" width="1024" height="640"></canvas>
+
+      <!-- Mobilní dotykové ovládání pro telefony/tablety -->
+      <div id="mobile-controls" class="mobile-ui">
+        <div class="touch-stick-zone" id="touch-stick-zone">
+          <div class="touch-stick-knob" id="touch-stick-knob"></div>
+        </div>
+        <div class="touch-buttons-zone">
+          <button id="touch-btn-burger" class="touch-action-btn btn-burger" title="Burger Shot">🍔</button>
+          <button id="touch-btn-cola" class="touch-action-btn btn-cola" title="Coca-Cola Spray">🥤</button>
+          <button id="touch-btn-mentos" class="touch-action-btn btn-mentos" title="Mentos Geyser">💥</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spodní nápověda & ovládání -->
+    <footer class="controls-cheatsheet">
+      <div class="cheat-item">
+        <span class="key-badge">W</span><span class="key-badge">A</span><span class="key-badge">S</span><span class="key-badge">D</span> / <span class="key-badge">Šipky</span>
+        <span class="cheat-desc">Pohyb rangera</span>
+      </div>
+      <div class="cheat-item">
+        <span class="mouse-badge">🖱️ Levé tl.</span>
+        <span class="cheat-desc">Střelba <strong>BURGERY</strong></span>
+      </div>
+      <div class="cheat-item">
+        <span class="mouse-badge">🖱️ Pravé tl.</span>
+        <span class="cheat-desc">Proud <strong>COCA-COLY</strong> (zpomalení)</span>
+      </div>
+      <div class="cheat-item">
+        <span class="key-badge wide">MEZERNÍK</span>
+        <span class="cheat-desc">Super <strong>MENTOS GEJZÍR</strong></span>
+      </div>
+      <div class="cheat-item">
+        <span class="key-badge">M</span>
+        <span class="cheat-desc">Zvuk / Hudba</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>

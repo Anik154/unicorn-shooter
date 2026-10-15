@@ -1,0 +1,278 @@
+/* Candy Ranger CSS Styling */
+:root {
+  --candy-pink: #ff6da8;
+  --candy-darkpink: #e04586;
+  --candy-blue: #54c1f0;
+  --candy-yellow: #ffc93c;
+  --candy-green: #7fd672;
+  --candy-bg: linear-gradient(135deg, #ffd3e8 0%, #ffe9c7 50%, #d8f3fe 100%);
+  --candy-shadow: 0 8px 24px rgba(224, 69, 134, 0.25);
+  --font-title: 'Lilita One', cursive, sans-serif;
+  --font-body: 'Fredoka', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--candy-bg);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #3b233a;
+  overflow-x: hidden;
+  padding: 12px;
+}
+
+.game-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 1080px;
+}
+
+/* Hlavička */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  padding: 10px 20px;
+  border-radius: 18px;
+  border: 3px solid #ffb6d8;
+  box-shadow: var(--candy-shadow);
+}
+
+.game-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  font-size: 2.2rem;
+  animation: bounce 2s infinite ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px) rotate(6deg); }
+}
+
+.game-logo h1 {
+  font-family: var(--font-title);
+  font-size: 1.8rem;
+  color: var(--candy-darkpink);
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 0 #ffd1e4;
+  line-height: 1;
+}
+
+.logo-sub {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #7b4274;
+  background: #ffe3f0;
+  padding: 3px 8px;
+  border-radius: 10px;
+  margin-left: 8px;
+}
+
+.quick-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-bubble {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.9rem;
+  background: #ffffff;
+  color: #5d2854;
+  border: 2px solid #ffb0d5;
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  transition: all 0.18s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-bubble:hover {
+  background: #ff5b9d;
+  color: #ffffff;
+  border-color: #e63980;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(230, 57, 128, 0.3);
+}
+
+.btn-bubble:active {
+  transform: translateY(1px);
+}
+
+/* Plátno Canvas */
+.canvas-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1024 / 640;
+  max-width: 1024px;
+  background: #000;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 5px solid #ffffff;
+  box-shadow: 0 12px 35px rgba(180, 50, 110, 0.28);
+  cursor: crosshair;
+}
+
+canvas#gameCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  image-rendering: auto;
+}
+
+/* Mobilní ovládání (Touch UI) */
+.mobile-ui {
+  display: none; /* Zobrazuje se pouze na dotykových zařízeních */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+@media (pointer: coarse) {
+  .mobile-ui {
+    display: block;
+  }
+}
+
+.touch-stick-zone {
+  position: absolute;
+  bottom: 25px;
+  left: 25px;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  border: 3px solid rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(4px);
+  pointer-events: auto;
+  touch-action: none;
+}
+
+.touch-stick-knob {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--candy-darkpink);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+
+.touch-buttons-zone {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  display: flex;
+  gap: 12px;
+  pointer-events: auto;
+}
+
+.touch-action-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.btn-burger {
+  background: #ffab40;
+}
+.btn-cola {
+  background: #e53935;
+}
+.btn-mentos {
+  background: #ab47bc;
+}
+
+/* Nápověda tlačítek (Cheatsheet) */
+.controls-cheatsheet {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  padding: 10px 18px;
+  border-radius: 16px;
+  border: 2px solid #ffd4e8;
+}
+
+.cheat-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.88rem;
+  color: #4a2846;
+}
+
+.key-badge {
+  background: #ffffff;
+  border: 2px solid #c9a6bd;
+  border-bottom-width: 4px;
+  border-radius: 6px;
+  padding: 2px 6px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.key-badge.wide {
+  padding: 2px 10px;
+}
+
+.mouse-badge {
+  background: #ffe6f2;
+  border: 2px solid #ff9ec9;
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: #af1857;
+}
+
+@media (max-width: 768px) {
+  .logo-sub {
+    display: none;
+  }
+  .controls-cheatsheet {
+    gap: 8px;
+    font-size: 0.8rem;
+  }
+}
